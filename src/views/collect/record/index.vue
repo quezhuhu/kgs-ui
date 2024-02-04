@@ -6,8 +6,8 @@
       </el-form-item>
 
       <el-form-item label="采集时间" prop="finishCollectTime">
-        <el-date-picker clearable v-model="queryParams.finishCollectTime" type="date" value-format="yyyy-MM-dd"
-          placeholder="请选择完成采集时间">
+        <el-date-picker clearable v-model="queryParams.finishCollectTime" type="datetime"
+          value-format="yyyy-MM-dd HH:mm:ss" placeholder="完成采集时间<=选择时间">
         </el-date-picker>
       </el-form-item>
 
@@ -74,17 +74,17 @@
       <el-table-column label="表编码" align="center" prop="tableCode" />
       <el-table-column label="上次采集时间" align="center" prop="lastCollectTime" width="180">
         <template slot-scope="scope">
-          <span>{{ parseTime(scope.row.lastCollectTime, '{y}-{m}-{d} {h}:{m}:{s}') }}</span>
+          <span>{{ parseTime(scope.row.lastCollectTime) }}</span>
         </template>
       </el-table-column>
       <el-table-column label="当前采集时间" align="center" prop="currentCollectTime" width="180">
         <template slot-scope="scope">
-          <span>{{ parseTime(scope.row.currentCollectTime, '{y}-{m}-{d} {h}:{m}:{s}') }}</span>
+          <span>{{ parseTime(scope.row.currentCollectTime) }}</span>
         </template>
       </el-table-column>
       <el-table-column label="完成采集时间" align="center" prop="finishCollectTime" width="180">
         <template slot-scope="scope">
-          <span>{{ parseTime(scope.row.finishCollectTime, '{y}-{m}-{d} {h}:{m}:{s}') }}</span>
+          <span>{{ parseTime(scope.row.finishCollectTime) }}</span>
         </template>
       </el-table-column>
 
@@ -96,8 +96,7 @@
 
       <el-table-column align="center" fixed="right" label="操作" width="120">
         <template slot-scope="scope">
-          <el-button size="small" type="text" icon="el-icon-view" @click="handleView(scope.row)"
-            >查看采集日志</el-button>
+          <el-button size="small" type="text" icon="el-icon-view" @click="handleView(scope.row)">查看采集日志</el-button>
         </template>
       </el-table-column>
 
@@ -119,10 +118,10 @@ export default {
   watch: {
     $route() {
       this.tableCode = this.$route.query.tableCode;
-      if(this.tableCode) {
+      if (this.tableCode) {
         this.queryParams.tableCode = this.tableCode;
         this.handleQuery();
-      }else {
+      } else {
         this.resetQuery();
         this.handleQuery();
       }

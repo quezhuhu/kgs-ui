@@ -6,13 +6,13 @@
         <el-input v-model="queryParams.tableCode" placeholder="请输入表编码" clearable @keyup.enter.native="handleQuery" />
       </el-form-item>
       <el-form-item label="开始时间" prop="startTime">
-        <el-date-picker clearable v-model="queryParams.startTime" type="date" value-format="yyyy-MM-dd"
-          placeholder="请选择开始时间">
+        <el-date-picker clearable v-model="queryParams.startTime" type="datetime"
+          value-format="yyyy-MM-dd HH:mm:ss" placeholder="开始时间>=选择时间">
         </el-date-picker>
       </el-form-item>
       <el-form-item label="结束时间" prop="endTime">
-        <el-date-picker clearable v-model="queryParams.endTime" type="date" value-format="yyyy-MM-dd"
-          placeholder="请选择结束时间">
+        <el-date-picker clearable v-model="queryParams.endTime" type="datetime"
+          value-format="yyyy-MM-dd HH:mm:ss" placeholder="结束时间<=选择时间">
         </el-date-picker>
       </el-form-item>
 
@@ -90,7 +90,7 @@
       </el-table-column>
       <el-table-column label="结束时间" align="center" prop="endTime" width="180">
         <template slot-scope="scope">
-          <span>{{ parseTime(scope.row.endTime, '{y}-{m}-{d} {h}:{m}:{s}') }}</span>
+          <span>{{ parseTime(scope.row.endTime)}}</span>
         </template>
       </el-table-column>
 

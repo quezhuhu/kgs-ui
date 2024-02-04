@@ -28,13 +28,13 @@
 
       <el-table-column label="上次采集时间" align="center" prop="lastCollectTime" width="180">
         <template slot-scope="scope">
-          <span>{{ parseTime(scope.row.lastCollectTime, '{y}-{m}-{d} {h}:{m}:{s}') }}</span>
+          <span>{{ parseTime(scope.row.lastCollectTime) }}</span>
         </template>
       </el-table-column>
 
       <el-table-column label="下次采集时间" align="center" prop="nextCollectTime" width="180">
         <template slot-scope="scope">
-          <span>{{ parseTime(scope.row.nextCollectTime, '{y}-{m}-{d} {h}:{m}:{s}') }}</span>
+          <span>{{ parseTime(scope.row.nextCollectTime) }}</span>
         </template>
       </el-table-column>
 
